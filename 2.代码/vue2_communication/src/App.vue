@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>我是APP组件</h1>
+    <h1 @click="handleClick">我是APP组件:{{user.name}}</h1>
 
     <Child1></Child1>
 
@@ -16,7 +16,10 @@ export default {
   name: 'App',
   data() {
     return {
-      msg: 666
+      msg: 666,
+      user:{
+        name:"xiaoming"
+      }
     }
   },
   // provide:{
@@ -31,13 +34,23 @@ export default {
     // 而provide函数,会在data函数执行之后才会执行
     // console.log('provide',this)
     return {
+      // 由于msg属性的值是一个基本数据类型,所以此处是复制了一个666来返回出去
+      // 后续修改msg的时候,msg的值会发生变化,但是此处的a存储的只是一个基本数据类型的666,并不是存储了msg属性
       a: this.msg,
-      v: 2,
+
+      // 注意:此处user属性中,存储的是一个user对象,所以v属性的值应该是user对象的地址值
+      v: this.user,
       c: 333
     }
   },
+  methods:{
+    handleClick(){
+      this.msg+=111;
+      console.log(this.msg)
+    }
+  },
   components: {
-    Child1,
+    Child1:Child1,
     Child2
   }
 }

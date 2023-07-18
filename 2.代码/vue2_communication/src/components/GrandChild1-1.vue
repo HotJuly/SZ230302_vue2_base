@@ -5,6 +5,9 @@
 </template>
 
 <script>
+// var  a = 1;
+// var b = a;
+// a = 2;
 export default {
   name: 'GrandChild1-1',
   inject:["a"]
