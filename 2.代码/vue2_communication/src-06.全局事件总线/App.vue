@@ -14,6 +14,9 @@ import Child2 from './components/Child2.vue'
 
 export default {
   name: 'App',
+  mounted(){
+    this.$bus.$emit('sendMsg',123)
+  },
   components: {
     Child1,
     Child2

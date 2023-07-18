@@ -11,6 +11,14 @@ export default {
   name: 'Child1',
   components:{
     GrandChild11
+  },
+  mounted(){
+    this.$bus.$on('sendMsg',(value)=>{
+      console.log('sendMsg',value)
+    })
+  },
+  beforeDestroy(){
+    this.$bus.$off('sendMsg');
   }
 }
 </script>

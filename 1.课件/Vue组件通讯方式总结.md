@@ -136,7 +136,57 @@
 					2.父组件还会给子组件绑定自定义事件(默认事件名:input)
     					<Child1 :value="msg" @input="(data)=>msg=data"></Child1>
     					
+    		总结:v-model具有两个效果,不仅将数据传递给了子组件,还给子组件自动绑定了一个自定义事件input
+    			目的是为了接收到子组件返回的数据
+    					
     				扩展:
     					1.model属性可以实现对v-model指令.默认属性名和事件名的自定义效果
+    					
+    2.sync修饰符
+    	1.将data中某个数据的值,作为组件标签的标签属性传递下去(属性名可以DIY)
+    			<Child1 :value="msg"></Child1>
+    					
+		2.父组件还会给子组件绑定自定义事件(事件名是update:+属性名)
+    			<Child1 :value="msg" @update:value="(data)=>msg=data"></Child1>
+    			
+    	扩展:
+    		由于它的功能和v-model几乎相同,所以Vue3最终将.sync修饰符删除
+    			但是留下来的v-model指令的核心其实是sync的
+    
+    3.全局事件总线
+    	1.角色
+    		订阅者
+    			想要数据的人,就是订阅者
+    		发布者
+    			拥有数据的人,就是发布者
+    			
+    	2.操作
+    		订阅
+    		发布
+    		解绑订阅
+    		
+    	3.约束
+    		1.订阅者和发布者必须同时存在
+    		2.订阅操作必须在发布之前
+    		
+    	4.流程:
+    		1.在Vue的原型对象上,添加$bus属性,并在内部存放一个Vue的实例对象
+				Vue.prototype.$bus = new Vue();
+				
+			2.订阅方组件,需要执行订阅操作
+    			this.$bus.$on('sendMsg',(value)=>{
+      				console.log('sendMsg',value)
+    			})
+    			
+    		3.发布方组件,需要执行发布操作
+    			this.$bus.$emit('sendMsg',123)
+    			
+    		过程中遇到的问题:
+    			1.属性名可以不用是$bus,可以随意取名
+    			2.$bus中必须存放的是Vue的实例对象
+    				否则后续使用$on或者$emit的时候会报错
+    					error:this.$bus.$on is not a function
+    		
+    		
 ```
 

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h1>我是APP组件</h1>
+    <h1>我是APP组件:{{count}}</h1>
 
-    <Child1></Child1>
+    <!-- <Child1 :count="count"></Child1> -->
+    <Child1 :count123.sync="count"></Child1>
     
-    <Child2></Child2>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ import Child2 from './components/Child2.vue'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      count:1
+    }
+  },
   components: {
     Child1,
     Child2
