@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2>我是Child 1组件:{{value}}</h2>
+    <h2>我是Child 1组件</h2>
     <GrandChild11></GrandChild11>
   </div>
 </template>
@@ -9,18 +9,13 @@
 import GrandChild11 from './GrandChild1-1.vue';
 export default {
   name: 'Child1',
-  props:['value'],
-  model:{
-    prop:"msg123123123123",
-    event:"input45678"
-  },
   components:{
     GrandChild11
   },
   mounted(){
     setTimeout(()=>{
-      this.$emit('input',"我是子组件的数据")
-    },5000)
+      this.$emit('click123',123)
+    },2000)
   }
 }
 </script>
