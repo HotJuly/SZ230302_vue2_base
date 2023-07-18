@@ -1,13 +1,12 @@
 <template>
   <div class="gc">
-    <h3>我是GrandChild 1-1组件:{{ a }}</h3>
+    <h3>我是GrandChild 1-1组件</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GrandChild1-1',
-  inject:["a"]
+  name: 'GrandChild1-1'
 }
 </script>
 

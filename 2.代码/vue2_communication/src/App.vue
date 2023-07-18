@@ -2,10 +2,8 @@
   <div id="app">
     <h1>我是APP组件</h1>
 
-    <!-- 所以使用两次Child1,Child1是构造函数,所以会生成两个组件实例对象 -->
     <Child1></Child1>
-    <Child1></Child1>
-    
+
     <Child2></Child2>
   </div>
 </template>
@@ -14,16 +12,30 @@
 import Child1 from './components/Child1.vue'
 import Child2 from './components/Child2.vue'
 
-console.log(Child1)
-
-// 每个.vue文件,暴露的其实都是组件的配置对象
-// 想要找到这个对象,可以通过this.$options快速找到
 export default {
   name: 'App',
-  mounted(){
-    // console.log('vm',this)
+  data() {
+    return {
+      msg: 666
+    }
   },
-  // 这里其实就是根据配置对象,来生成了对应的构造函数
+  // provide:{
+  //   // 该写法不行,因为provide对象创建的时候,配置对象才创建,组件实例还没有创建成功,没有this
+  //   // a:this.msg,
+  //   a:1,
+  //   v:2,
+  //   c:333
+  // },
+  provide() {
+    // 内部的这个对象,只有等provide函数执行的时候才会生成
+    // 而provide函数,会在data函数执行之后才会执行
+    // console.log('provide',this)
+    return {
+      a: this.msg,
+      v: 2,
+      c: 333
+    }
+  },
   components: {
     Child1,
     Child2
@@ -32,9 +44,9 @@ export default {
 </script>
 
 <style>
-#app{
-  width:80%;
-  padding:20px;
-  border:1px solid;
+#app {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid;
 }
 </style>
