@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h2>我是Child 1组件:{{value}}</h2>
+    <h2>我是Child 1组件 当前显示状态:{{value}}</h2>
+    <button @click="changeShow">我想关闭自己</button>
     <GrandChild11></GrandChild11>
   </div>
 </template>
@@ -9,20 +10,14 @@
 import GrandChild11 from './GrandChild1-1.vue';
 export default {
   name: 'Child1',
-  props:['value'],
-  // model:{
-  //   prop:"msg123123123123",
-  //   event:"input45678"
-  // },
+  props:["value"],
+  methods:{
+    changeShow(){
+      this.$emit('input',false);
+    }
+  },
   components:{
     GrandChild11
-  },
-  mounted(){
-    // console.log(this.value)
-
-    setTimeout(()=>{
-      this.$emit('input',"我是子组件的数据")
-    },5000)
   }
 }
 </script>

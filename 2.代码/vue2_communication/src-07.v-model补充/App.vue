@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <h1 ref="h1">我是APP组件</h1>
+    <h1>我是APP组件</h1>
 
-    <Child1 ref="child"></Child1>
+    <button @click="isShow=!isShow">父组件用于切换Child的显示隐藏</button>
+
+    <Child1 v-model="isShow" v-show="isShow"></Child1>
+
     
-    <Child2></Child2>
+    <!-- <Child2></Child2> -->
   </div>
 </template>
 
@@ -16,14 +19,8 @@ export default {
   name: 'App',
   data(){
     return{
-      msg:"我是App的数据"
+      isShow:true
     }
-  },
-  mounted(){
-    // console.log('App',this.msg)
-    // console.log('$children',this.$children[0].aaa)
-    // console.log('$children',this.$children)
-    console.log(this.$refs.child.aaa)
   },
   components: {
     Child1,

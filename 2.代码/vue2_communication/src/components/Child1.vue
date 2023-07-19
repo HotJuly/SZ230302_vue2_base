@@ -9,8 +9,17 @@
 import GrandChild11 from './GrandChild1-1.vue';
 export default {
   name: 'Child1',
+  data(){
+    return{
+      aaa:666
+    }
+  },
   components:{
     GrandChild11
+  },
+  mounted(){
+    // console.log('Child1',this.$parent.msg)
+    // console.log('$root',this.$root.$options.name)
   }
 }
 </script>
