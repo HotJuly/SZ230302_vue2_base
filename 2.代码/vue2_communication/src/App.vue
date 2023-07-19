@@ -2,14 +2,24 @@
   <div id="app">
     <h1>我是APP组件</h1>
 
-    <Child1 a="1" b="2" c="3" ></Child1>
+    <Child1>
+      <template>
+        <p>我是默认插槽</p>
+      </template>
+      <template v-slot:header>
+        <h4>我是具名插槽</h4>
+      </template>
+
+      <!-- <template #footer="scope">
+        <h4>{{scope.title}},我是Footer插槽</h4>
+      </template> -->
+
+      <template #footer="{title}">
+        <h4>{{title}},我是Footer插槽</h4>
+      </template>
+    </Child1>
     
-    <!-- <Child2 @abc="()=>{}" @ccc="()=>{}" @ddd="()=>{}"></Child2> -->
-    <Child2 v-on="{
-      click:handleClick,
-      ccc:()=>{},
-      ddd:()=>{}
-    }"></Child2>
+    <Child2 />
   </div>
 </template>
 
@@ -19,11 +29,6 @@ import Child2 from './components/Child2.vue'
 
 export default {
   name: 'App',
-  methods:{
-    handleClick(){
-      console.log('哎呀,我被点了')
-    }
-  },
   components: {
     Child1,
     Child2

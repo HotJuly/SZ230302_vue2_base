@@ -1,12 +1,13 @@
 <template>
   <div class="gc">
-    <h3>我是GrandChild 1-1组件</h3>
+    <h3>我是GrandChild 1-1组件 b:{{ b }} c:{{ c }}</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GrandChild1-1'
+  name: 'GrandChild1-1',
+  props:["b","c"]
 }
 </script>
 
