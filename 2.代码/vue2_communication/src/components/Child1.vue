@@ -1,7 +1,18 @@
 <template>
   <div class="hello">
-    <h2>我是Child 1组件</h2>
-    <GrandChild11></GrandChild11>
+    <h2>我是Child 1组件 a:{{ a }}</h2>
+    <!-- <GrandChild11 :b="b" :c="c"></GrandChild11> -->
+
+    <!-- <GrandChild11 v-bind="{
+      b:6,
+      c:7
+    }"></GrandChild11>  -->
+    <!-- 以上代码,等同于以下代码 -->
+    <!-- <GrandChild11 :b="6" :c="7"></GrandChild11> -->
+
+    <GrandChild11 v-bind="$attrs"></GrandChild11> 
+
+    
   </div>
 </template>
 
@@ -9,17 +20,14 @@
 import GrandChild11 from './GrandChild1-1.vue';
 export default {
   name: 'Child1',
-  data(){
-    return{
-      aaa:666
-    }
+  // props:['a','b','c'],
+  props:['a'],
+  mounted(){
+    // console.log('a',this.a)
+    // console.log('b',this.$attrs)
   },
   components:{
     GrandChild11
-  },
-  mounted(){
-    // console.log('Child1',this.$parent.msg)
-    // console.log('$root',this.$root.$options.name)
   }
 }
 </script>

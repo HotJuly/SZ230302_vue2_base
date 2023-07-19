@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <h1 ref="h1">我是APP组件</h1>
+    <h1>我是APP组件</h1>
 
-    <Child1 ref="child"></Child1>
+    <Child1 a="1" b="2" c="3" ></Child1>
     
-    <Child2></Child2>
+    <!-- <Child2 @abc="()=>{}" @ccc="()=>{}" @ddd="()=>{}"></Child2> -->
+    <Child2 v-on="{
+      click:handleClick,
+      ccc:()=>{},
+      ddd:()=>{}
+    }"></Child2>
   </div>
 </template>
 
@@ -14,16 +19,10 @@ import Child2 from './components/Child2.vue'
 
 export default {
   name: 'App',
-  data(){
-    return{
-      msg:"我是App的数据"
+  methods:{
+    handleClick(){
+      console.log('哎呀,我被点了')
     }
-  },
-  mounted(){
-    // console.log('App',this.msg)
-    // console.log('$children',this.$children[0].aaa)
-    // console.log('$children',this.$children)
-    console.log(this.$refs.child.aaa)
   },
   components: {
     Child1,
