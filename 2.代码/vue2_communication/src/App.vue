@@ -2,24 +2,9 @@
   <div id="app">
     <h1>我是APP组件</h1>
 
-    <Child1>
-      <template>
-        <p>我是默认插槽</p>
-      </template>
-      <template v-slot:header>
-        <h4>我是具名插槽</h4>
-      </template>
-
-      <!-- <template #footer="scope">
-        <h4>{{scope.title}},我是Footer插槽</h4>
-      </template> -->
-
-      <template #footer="{title}">
-        <h4>{{title}},我是Footer插槽</h4>
-      </template>
-    </Child1>
+    <Child1></Child1>
     
-    <Child2 />
+    <Child2></Child2>
   </div>
 </template>
 

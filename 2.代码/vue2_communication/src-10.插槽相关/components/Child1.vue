@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
-    <h2>我是Child 1组件</h2>
-    <GrandChild11></GrandChild11>
+    <!-- <h2>{{title}},我是Child 1组件</h2> -->
+
+    <slot name="default"></slot>
+    <slot name="header"></slot>
+    <slot name="footer" :title="title" ></slot>
   </div>
 </template>
 
@@ -9,6 +12,11 @@
 import GrandChild11 from './GrandChild1-1.vue';
 export default {
   name: 'Child1',
+  data(){
+    return{
+      title:"你好"
+    }
+  },
   components:{
     GrandChild11
   }
